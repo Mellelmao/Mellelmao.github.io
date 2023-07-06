@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Melwin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333333;
+            padding: 20px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #eeeeee;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #333333;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 5px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh; /* Adjust the height value as needed */
+            margin-top: 50px; /* Adjust the margin-top value as needed */
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px; /* Adjust the margin-bottom value as needed */
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 0;
+            margin-top: 10px; /* Adjust the margin-top value as needed */
+        }
+
+        p {
+            font-size: 18px;
+            margin: 0;
+            outline: 2px solid #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #copy-feedback {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <video id="video-background" src="images/video.mp4" autoplay muted loop></video>
+
+    <main>
+        <div class="profile-container">
+            <img src="images/solo.jpg" alt="Profile Picture" class="profile-picture">
+            <h2>Melwin</h2>
+            <p>I like cats</p>
+            <div class="social-links">
+                <a id="discord-link" href="#" data-clipboard-text="invertable"><img src="images/discord.png" alt="Discord"></a>
+                <script>
+  // Copy text to clipboard
+  function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  // Show feedback text
+  function showFeedbackText() {
+    const feedbackText = document.createElement('div');
+    feedbackText.textContent = 'Discord username copied!';
+    feedbackText.classList.add('copy-feedback');
+
+    const socialLinks = document.querySelector('.social-links');
+    socialLinks.parentNode.insertBefore(feedbackText, socialLinks.nextSibling);
+
+    setTimeout(function() {
+      feedbackText.remove();
+    }, 3000);
+  }
+
+  // Add event listener to Discord image
+  const discordLink = document.getElementById('discord-link');
+  discordLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    const username = this.getAttribute('data-clipboard-text');
+    copyToClipboard(username);
+    showFeedbackText();
+  });
+</script>
+
+
+  
+  
+  
