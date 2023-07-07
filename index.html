@@ -109,10 +109,16 @@
             border-radius: 5px;
             display: none;
         }
+    @media (max-width: 600px) {
+            /* Apply specific styles for mobile devices */
+            #video-background {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <video id="video-background" src="images/video.mp4" autoplay muted loop></video>
+    <video id="video-background" src="images/video.mp4" autoplay muted loop playsinline></video>
 
     <main>
         <div class="profile-container">
@@ -121,119 +127,46 @@
             <p>I like cats</p>
             <div class="social-links">
                 <a id="discord-link" href="#" data-clipboard-text="invertable"><img src="images/discord.png" alt="Discord"></a>
-                <script>
-  // Copy text to clipboard
-  function copyToClipboard(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-  }
-
-  // Show feedback text
-  function showFeedbackText() {
-    const feedbackText = document.createElement('div');
-    feedbackText.textContent = 'Discord username copied!';
-    feedbackText.classList.add('copy-feedback');
-
-    const socialLinks = document.querySelector('.social-links');
-    socialLinks.parentNode.insertBefore(feedbackText, socialLinks.nextSibling);
-
-    setTimeout(function() {
-      feedbackText.remove();
-    }, 3000);
-  }
-
-  // Add event listener to Discord image
-  const discordLink = document.getElementById('discord-link');
-  discordLink.addEventListener('click', function(event) {
-    event.preventDefault();
-    const username = this.getAttribute('data-clipboard-text');
-    copyToClipboard(username);
-    showFeedbackText();
-  });
-</script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta property="og:title" content="Melwin's About me">
-    <meta property="og:description" content="I'm not gay">
-    <meta property="og:image" content="https://w0.peakpx.com/wallpaper/510/468/HD-wallpaper-cute-cat-sleeping-cute-sleep-dreams-cat-kitten-bed-animal.jpg">
-</head>
-<body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Melwin</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        button {
-            background-color: #3333332d;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Melwin</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        button {
-            background-color: #3333332d;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
-    <script>
-        var audio = new Audio("images/90mh.mp3");
-        audio.volume -= 0.2; // Decrease volume by 20%
-
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-        }
-    </script>
-</head>
-<body>
-    <video id="video-background" src="images/video.mp4" autoplay muted loop></video>
-
-    <main>
-        <!-- Profile content -->
+            </div>
+        </div>
     </main>
 
-    <button onclick="toggleMusic()">Toggle Music</button>
+    <script>
+        // Copy text to clipboard
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+
+        // Show feedback text
+        function showFeedbackText() {
+            const feedbackText = document.createElement('div');
+            feedbackText.textContent = 'Discord username copied!';
+            feedbackText.classList.add('copy-feedback');
+
+            const socialLinks = document.querySelector('.social-links');
+            socialLinks.parentNode.insertBefore(feedbackText, socialLinks.nextSibling);
+
+            setTimeout(function() {
+                feedbackText.remove();
+            }, 3000);
+        }
+
+        // Add event listener to Discord image
+        const discordLink = document.getElementById('discord-link');
+        discordLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            const username = this.getAttribute('data-clipboard-text');
+            copyToClipboard(username);
+            showFeedbackText();
+        });
+    </script>
 </body>
 </html>
 
-
-
-  
   
   
