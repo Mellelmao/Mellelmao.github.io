@@ -4,6 +4,38 @@
     <meta charset="UTF-8">
     <title>Melwin</title>
     <style>
+        .blur-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            backdrop-filter: blur(15px); /* Apply the blur effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background color */
+        }
+
+        .start-button {
+            padding: 12px 24px;
+            background-color: rgba(255, 255, 255, 0.4); /* Add transparency to the background */
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-button:hover {
+            background-color: rgba(255, 255, 255, 0.9); /* Adjust the transparency on hover if desired */
+        }
+        
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -109,7 +141,8 @@
             border-radius: 5px;
             display: none;
         }
-    @media (max-width: 600px) {
+        
+        @media (max-width: 600px) {
             /* Apply specific styles for mobile devices */
             #video-background {
                 display: none;
@@ -118,7 +151,12 @@
     </style>
 </head>
 <body>
-    <video id="video-background" src="images/video.mp4" autoplay muted loop playsinline></video>
+    <div class="blur-container">
+        <button class="start-button" onclick="startVideoAndMusic()">Start</button>
+    </div>
+
+    <video id="video-background" src="images/video.mp4" poster="images/video-poster.jpg" autoplay loop muted playsinline></video>
+    <audio id="audio" src="images/90mh.mp3"></audio>
 
     <main>
         <div class="profile-container">
@@ -164,9 +202,16 @@
             copyToClipboard(username);
             showFeedbackText();
         });
+
+        function startVideoAndMusic() {
+            const blurContainer = document.querySelector('.blur-container');
+            const videoBackground = document.getElementById('video-background');
+            const audio = document.getElementById('audio');
+
+            blurContainer.style.display = 'none'; // Remove the blur effect
+            videoBackground.style.filter = 'none'; // Remove the blur effect from the video
+            audio.play(); // Start playing the audio
+        }
     </script>
 </body>
 </html>
-
-  
-  
