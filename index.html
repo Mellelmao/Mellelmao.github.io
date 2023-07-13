@@ -11,16 +11,16 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            backdrop-filter: blur(15px); /* Apply the blur effect */
+            backdrop-filter: blur(15px);
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background color */
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
         .start-button {
             padding: 12px 24px;
-            background-color: rgba(255, 255, 255, 0.4); /* Add transparency to the background */
+            background-color: rgba(255, 255, 255, 0.4);
             border: none;
             border-radius: 30px;
             font-size: 18px;
@@ -33,9 +33,9 @@
         }
 
         .start-button:hover {
-            background-color: rgba(255, 255, 255, 0.9); /* Adjust the transparency on hover if desired */
+            background-color: rgba(255, 255, 255, 0.9);
         }
-        
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -79,21 +79,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 80vh; /* Adjust the height value as needed */
-            margin-top: 50px; /* Adjust the margin-top value as needed */
+            height: 80vh;
+            margin-top: 50px;
         }
 
         .profile-picture {
             border-radius: 50%;
             width: 200px;
             height: 200px;
-            margin-bottom: 10px; /* Adjust the margin-bottom value as needed */
+            margin-bottom: 10px;
         }
 
         h2 {
             font-size: 24px;
             margin: 0;
-            margin-top: 10px; /* Adjust the margin-top value as needed */
+            margin-top: 10px;
         }
 
         p {
@@ -141,9 +141,8 @@
             border-radius: 5px;
             display: none;
         }
-        
+
         @media (max-width: 600px) {
-            /* Apply specific styles for mobile devices */
             #video-background {
                 display: none;
             }
@@ -155,7 +154,7 @@
         <button class="start-button" onclick="startVideoAndMusic()">Start</button>
     </div>
 
-    <video id="video-background" src="images/video.mp4" poster="images/video-poster.jpg" autoplay loop muted playsinline></video>
+    <video id="video-background" src="images/LIFECOULDBEADREAM.mp4" poster="images/video-poster.jpg" autoplay loop muted playsinline></video>
     <audio id="audio" src="https://cdn.discordapp.com/attachments/953019383964385360/1121198270824321084/90mh.mp3"></audio>
 
     <main>
@@ -164,13 +163,13 @@
             <h2>Melwin</h2>
             <p>I like cats</p>
             <div class="social-links">
-                <a id="discord-link" href="#" data-clipboard-text="invertable"><img src="images/discord.png" alt="Discord"></a>
+                <a id="discord-link1" href="#" data-clipboard-text="invertable"><img src="images/discord.png" alt="Discord"></a>
+                <a id="redirectbutton" href="index2.html"><img src="images/playbutton.png" alt="redirect"></a>
             </div>
         </div>
     </main>
 
     <script>
-        // Copy text to clipboard
         function copyToClipboard(text) {
             const textarea = document.createElement('textarea');
             textarea.value = text;
@@ -180,7 +179,6 @@
             document.body.removeChild(textarea);
         }
 
-        // Show feedback text
         function showFeedbackText() {
             const feedbackText = document.createElement('div');
             feedbackText.textContent = 'Discord username copied!';
@@ -194,13 +192,17 @@
             }, 3000);
         }
 
-        // Add event listener to Discord image
-        const discordLink = document.getElementById('discord-link');
-        discordLink.addEventListener('click', function(event) {
+        const discordLink1 = document.getElementById('discord-link1');
+        discordLink1.addEventListener('click', function(event) {
             event.preventDefault();
             const username = this.getAttribute('data-clipboard-text');
             copyToClipboard(username);
             showFeedbackText();
+        });
+
+        const discordLink2 = document.getElementById('discord-link2');
+        discordLink2.addEventListener('click', function(event) {
+            event.preventDefault();
         });
 
         function startVideoAndMusic() {
@@ -208,21 +210,17 @@
             const videoBackground = document.getElementById('video-background');
             const audio = document.getElementById('audio');
 
-            blurContainer.style.display = 'none'; // Remove the blur effect
-            videoBackground.style.filter = 'none'; // Remove the blur effect from the video
-            audio.play(); // Start playing the audio
+            blurContainer.style.display = 'none';
+            videoBackground.style.filter = 'none';
+            const audioElement = document.getElementById("audio");
+
+            audio.addEventListener("ended", function () {
+                this.currentTime = 0;
+                this.play();
+            });
+
+            audio.play();
         }
     </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta property="og:title" content="Melwin's about me">
-  <meta property="og:description" content="I'm not actually gay.">
-  <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5SyddkDbP94UjqDUW_kS0F5jGZv5E1ozeQw&usqp=CAU">
-</head>
-<body>
 </body>
 </html>
