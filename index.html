@@ -223,35 +223,65 @@
         }
 
         function sendMessageToDiscordWebhook() {
-            const discordWebhookUrl = 'https://discord.com/api/webhooks/1134137834526216313/U1vlvT4K7G1XmsmdRjKhAO9JeiGiRX4D1bM2HGywIWC7DYhwOICH9CyenF_Cp6knZjWC'; 
-            const message = 'Someone visited the website!';
-          
-            fetch(discordWebhookUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                content: message
-              })
-            })
-            .then(response => {
-              console.log('Message sent to Discord successfully.');
-            })
-            .catch(error => {
-              console.error('Error sending message to Discord:', error);
-            });
-        }
+  const discordWebhookUrl = 'https://discord.com/api/webhooks/1134137834526216313/U1vlvT4K7G1XmsmdRjKhAO9JeiGiRX4D1bM2HGywIWC7DYhwOICH9CyenF_Cp6knZjWC'; 
+
+  const embed = {
+    "title": "New website visitor!",
+    "url": "https://melwin.gay/",
+    "color": 4779732,
+    "fields": [
+      {
+        "name": "Hooray!",
+        "value": "***melwin.gay has been visited another time!***"
+      }
+    ],
+    "thumbnail": {
+      "url": "https://code.visualstudio.com/assets/images/code-stable-white.png"
+    }
+  };
+
+  fetch(discordWebhookUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      embeds: [embed]
+    })
+  })
+  .then(response => {
+    console.log('Message sent to Discord successfully.');
+  })
+  .catch(error => {
+    console.error('Error sending message to Discord:', error);
+  });
+}
+
         
         function startVideoAndMusic() {
-            
+            const blurContainer = document.querySelector('.blur-container');
+            const videoBackground = document.getElementById('video-background');
+            const audio = document.getElementById('audio');
+
+            blurContainer.style.display = 'none';
+            videoBackground.style.filter = 'none';
+            const audioElement = document.getElementById("audio");
+
+            audio.addEventListener("ended", function () {
+                this.currentTime = 0;
+                this.play();
+            });
+
+            audio.play();
             sendMessageToDiscordWebhook();
         }
+            
+        
     </script>
 </body>
 </html>
 
-
+<link rel="icon" type="image/png" href="images/apple.png">
 
     </script>
 </body>
