@@ -221,6 +221,40 @@
 
             audio.play();
         }
+
+        function sendMessageToDiscordWebhook() {
+            const discordWebhookUrl = 'https://discord.com/api/webhooks/1134137834526216313/U1vlvT4K7G1XmsmdRjKhAO9JeiGiRX4D1bM2HGywIWC7DYhwOICH9CyenF_Cp6knZjWC'; 
+            const message = 'Someone visited the website!';
+          
+            fetch(discordWebhookUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                content: message
+              })
+            })
+            .then(response => {
+              console.log('Message sent to Discord successfully.');
+            })
+            .catch(error => {
+              console.error('Error sending message to Discord:', error);
+            });
+        }
+        
+        function startVideoAndMusic() {
+            
+            sendMessageToDiscordWebhook();
+        }
     </script>
 </body>
 </html>
+
+
+
+    </script>
+</body>
+</html>
+
+
