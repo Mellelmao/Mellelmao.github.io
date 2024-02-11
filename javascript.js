@@ -1,15 +1,18 @@
-function copyToClipboard(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-}
-
-const discordLink1 = document.getElementById('discord-link1');
-discordLink1.addEventListener('click', function(event) {
-    event.preventDefault();
-    const username = this.getAttribute('data-clipboard-text');
-    copyToClipboard(username);
+document.addEventListener("DOMContentLoaded", function() {
+    const discordLink1 = document.getElementById('discord-link1');
+    discordLink1.addEventListener('click', function(event) {
+        event.preventDefault();
+        const username = this.getAttribute('data-clipboard-text');
+        myFunction(username);
+    });
 });
+
+function myFunction(username) {
+    var tempInput = document.createElement("input");
+    tempInput.setAttribute("value", username);
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+}
