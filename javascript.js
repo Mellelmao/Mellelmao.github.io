@@ -12,7 +12,8 @@ function myFunction(username) {
     tempInput.setAttribute("value", username);
     document.body.appendChild(tempInput);
     tempInput.select();
-    tempInput.setSelectionRange(0, 99999); // For mobile devices
+    tempInput.setSelectionRange(0, 99999); // For mobile nerds
     document.execCommand("copy");
     document.body.removeChild(tempInput);
+    console.log("successfully copied.")
 }
