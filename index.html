@@ -2,37 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Melwin's Website" />
-    <meta property="og:description" content="Very Cool Website" />
-    <meta property="og:url" content="https://melwin.gay/" />
-    <meta property="og:image" content="https://media.discordapp.net/attachments/955090523931156640/957613323728330843/catplayingwithmoney.gif" />
-    <title>Melwin's Page</title>
-    <link rel="shortcut icon" type="image/pfp" href="images/pfp.jpg">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="javascript.js"></script>
+    <meta property="og:title" content="Melwin's Website">
+    <meta property="og:description" content="I suck at coding">
+    <meta property="og:url" content="https://melwin.gay/">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/955090523931156640/957613323728330843/catplayingwithmoney.gif">
+    <title>Melwin.wtf</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="ImageGif">
-        <img id="image-background" src="images/leaves.gif" alt="Background Image">
-    </div>
+    <header>
+        <h1>Melwinss</h1>
+        <h4>Melwin</h4>
+    </header>
+
     <main>
-        <div class="profile-container">
-            <img src="images/mypfp.gif" alt="Profile Picture" class="profile-picture">
-            <h2>Melwin</h2>
-            <p>Hey! My name's Melwin, and I like to code.
-            DM me if you want a personalized website & domain.</p>
-            <div class="social-links">
-                <a id="discord-link1" href="#" data-clipboard-text="invertable"><img src="images/discord.png" alt="Discord"></a>
-                <a id="telegram" href="https://t.me/melwinlmao" target="_blank"><img src="https://cdn.solo.to/images/contact/telegram-min.svg" alt="Telegram"></a> 
+        <div class="profile-pic">
+            <a href="https://discord.com/users/666357818567426058" target="_blank">
+                <img src="image/profile.gif" alt="Discord Button">
+            </a>
+        </div>
+
+        <div class="box"></div>
+
+        <div class="spotify">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4kjI1gwQZRKNDkw1nI475M?utm_source=generator&theme=0" width="100%" height="130" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <div class="wrapper">
+            <div class="boxes"></div>
         </div>
     </main>
 
-    <div class="spotify-preview">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3w3y8KPTfNeOKPiqUTakBh?utm_source=generator&theme=0" width="500" height="150" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const particleContainer = document.querySelector('.boxes');
+            let particles = [];
 
+            const createParticle = () => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                particle.style.animationDuration = Math.random() * 2 + 1 + 's';
+                particleContainer.appendChild(particle);
+                particles.push(particle);
 
-    </div>
+                particle.addEventListener('animationend', () => {
+                    particle.remove();
+                    particles = particles.filter(p => p !== particle);
+                });
+            };
+
+            const spawnParticles = () => {
+                const interval = setInterval(createParticle, 120);
+                setTimeout(() => {
+                    clearInterval(interval);
+                }, 22000); 
+            };
+
+            spawnParticles();
+        });
+    </script>
 </body>
 </html>
