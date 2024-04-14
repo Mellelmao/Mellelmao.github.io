@@ -50,6 +50,7 @@ h4 {
 .profile-pic img {
     width: 100%;
     border-radius: 50%;
+    border: 2.5px solid #26418a;
 }
 
 .boxes {
@@ -101,4 +102,29 @@ h4 {
         transform: translateY(-100vh) translateX(calc(-100vw + 100%));
         opacity: 0;
     }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 60px; /* Decreased font size for smaller screens */
+    }
+
+    .profile-pic {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        margin: auto;
+        position: absolute;
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .spotify {
+        left: 49.3%;
+        top: 75.79%;
+    }
+
 }
